@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnomalyWare | Digital Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111;
+            color: #f0f0f0;
+        }
+        .section-padding {
+            padding: 6rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 150px;
+            background-color: #333;
+            border-bottom: 3px solid #dc2626;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #bbb;
+            border-radius: 0.5rem 0.5rem 0 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #202020;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #991b1b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91c1c;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-black': '#111111',
+                        'secondary-dark': '#1a1a1a',
+                        'accent-red': '#ef4444',
+                        'text-red-light': '#fca5a5',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-primary-black text-white">
+
+    <header id="navbar" class="sticky top-0 z-50 bg-primary-black/95 backdrop-blur-sm shadow-2xl border-b border-red-700/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#landing" class="text-2xl font-extrabold tracking-widest text-accent-red hover:text-text-red-light transition duration-300">
+                    ANOMALYWARE
+                </a>
+
+                <nav class="flex space-x-4 sm:space-x-8 text-sm sm:text-base font-semibold">
+                    <a href="#about" class="nav-link text-gray-300 hover:text-accent-red transition duration-200" data-section="about">About</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-accent-red transition duration-200" data-section="projects">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-accent-red transition duration-200" data-section="contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="landing" class="section-padding flex items-center justify-center bg-primary-black">
+            <div class="max-w-4xl text-center scroll-reveal">
+                <h1 class="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight">
+                    <span class="block text-text-red-light">Engineered for the Unconventional.</span>
+                    <span class="block text-accent-red">AnomalyWare.</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-400 font-light mb-8">
+                    We specialize in high-impact, unconventional software solutions that bypass the expected and deliver the extraordinary.
+                </p>
+                <a href="#projects" class="inline-block px-8 py-3 bg-accent-red text-white text-lg font-bold rounded-lg shadow-2xl shadow-red-500/30 hover:bg-red-600 transition duration-300 transform hover:scale-105">
+                    Explore Anomalies &rarr;
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding bg-secondary-dark border-t border-b border-red-800/50">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4 scroll-reveal">
+                <div class="p-8 border border-red-700/50 rounded-xl shadow-2xl shadow-black/50 bg-black/30">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-accent-red">Our Ethos</h2>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        At AnomalyWare, we don't follow best practices—we write them. We target complex, often-ignored corners of the digital landscape, providing bespoke development and deep-dive consulting. Our focus is on systems stability, extreme performance, and pioneering security architecture. If it's a challenge others avoid, it's a project for us.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <div class="p-4 bg-gray-900 rounded-lg shadow-md border-l-4 border-accent-red scroll-reveal">
+                        <h3 class="text-xl font-semibold text-text-red-light">Focus</h3>
+                        <p class="text-sm text-gray-400">Extreme-edge performance and secure, distributed computing.</p>
+                    </div>
+                    <div class="p-4 bg-gray-900 rounded-lg shadow-md border-l-4 border-accent-red scroll-reveal" style="transition-delay: 0.2s;">
+                        <h3 class="text-xl font-semibold text-text-red-light">Process</h3>
+                        <p class="text-sm text-gray-400">Agile, transparent, and driven by iterative chaos testing.</p>
+                    </div>
+                    <div class="p-4 bg-gray-900 rounded-lg shadow-md border-l-4 border-accent-red scroll-reveal" style="transition-delay: 0.4s;">
+                        <h3 class="text-xl font-semibold text-text-red-light">Team</h3>
+                        <p class="text-sm text-gray-400">A global collective of senior developers and security researchers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding bg-primary-black">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-red scroll-reveal">Project Dossiers</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+
+                    <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 scroll-reveal">
+                        <div class="project-thumbnail">
+                            <span class="text-text-red-light text-2xl font-bold">SYNAPSE</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">Synapse Protocol</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A highly obfuscated, low-latency messaging layer for sensitive data transfer across hostile networks.</p>
+                            <a href="https://example.com/synapse-dossier" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center">
+                                View Technical Brief &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="project-thumbnail">
+                            <span class="text-text-red-light text-2xl font-bold">CHRONOS</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">Chronos Engine</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A custom temporal database engine optimized for retroactive data integrity verification and rapid rollback.</p>
+                            <a href="https://example.com/chronos-dossier" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center">
+                                View Technical Brief &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 scroll-reveal" style="transition-delay: 0.4s;">
+                        <div class="project-thumbnail">
+                            <span class="text-text-red-light text-2xl font-bold">ECLIPSE</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2 text-white">Eclipse Framework</h3>
+                            <p class="text-gray-400 mb-4 text-sm">An ambient computing framework for headless device orchestration in zero-trust environments.</p>
+                            <a href="https://example.com/eclipse-dossier" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center">
+                                View Technical Brief &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding bg-secondary-dark border-t border-red-800/50">
+            <div class="max-w-4xl mx-auto px-4 w-full">
+                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-red scroll-reveal">Liaison Required</h2>
+
+                <div class="grid md:grid-cols-2 gap-8 scroll-reveal">
+                    <div class="space-y-6 bg-black/50 p-8 rounded-xl border border-red-800/50">
+                        <p class="text-gray-400 text-lg">Initiate a secure communication channel. We prefer direct, technical inquiries.</p>
+
+                        <div class="flex items-center space-x-3">
+                            <span class="text-accent-red text-2xl">&bull;</span>
+                            <div>
+                                <span class="block text-text-red-light font-bold">Secure Email</span>
+                                <a href="mailto:hiatusdev@outlook.com" class="text-gray-300 hover:text-white transition">hiatusdev@outlook.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <span class="text-accent-red text-2xl">&bull;</span>
+                            <div>
+                                <span class="block text-text-red-light font-bold">Discord Channel</span>
+                                <a href="https://discord.gg/your-invite-code" target="_blank" class="text-gray-300 hover:text-white transition">anomalyware-HQ (Invite)</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <span class="text-accent-red text-2xl">&bull;</span>
+                            <div>
+                                <span class="block text-text-red-light font-bold">Telegram Secure</span>
+                                <a href="https://t.me/your-telegram-handle" target="_blank" class="text-gray-300 hover:text-white transition">@AnomalyOps</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-black/50 p-8 rounded-xl shadow-2xl">
+                        <form onsubmit="event.preventDefault(); showMessage();" class="space-y-4">
+                            <p class="text-gray-500 text-sm">Use this matrix to send a preliminary message.</p>
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300">Agent/Organization Name</label>
+                                <input type="text" id="name" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-accent-red focus:border-accent-red">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300">Response Channel (Email/Telegram ID)</label>
+                                <input type="text" id="email" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-accent-red focus:border-accent-red">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300">Briefing Summary</label>
+                                <textarea id="message" rows="4" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-accent-red focus:border-accent-red"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-bold text-white bg-accent-red hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-red focus:ring-offset-secondary-dark transition duration-200 uppercase tracking-wider">
+                                Transmit
+                            </button>
+                        </form>
+                        <div id="status-message" class="mt-4 hidden p-3 rounded-md text-center text-sm font-semibold bg-green-900 border border-green-700 text-green-300">
+                            Message received. Await confirmation from AnomalyWare Operative.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary-black py-8 border-t border-red-900/50 text-center text-gray-600 text-sm">
+        <p>&copy; 2025 AnomalyWare. Engineered for the Unconventional.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentSectionId = entry.target.id;
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('border-b-2', 'border-accent-red', 'text-accent-red');
+                        link.classList.add('text-gray-300');
+                    });
+
+                    const activeLink = document.querySelector(`.nav-link[data-section="${currentSectionId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('border-b-2', 'border-accent-red', 'text-accent-red');
+                        activeLink.classList.remove('text-gray-300');
+                    }
+                }
+            });
+        }, {
+            rootMargin: "-50% 0px -50% 0px", 
+            threshold: 0 
+        });
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px" 
+        });
+
+        sections.forEach(section => {
+            navObserver.observe(section);
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        function showMessage() {
+            const messageBox = document.getElementById('status-message');
+            messageBox.classList.remove('hidden');
+            
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            }, 5000);
+        }
+
+        document.querySelector('#landing .scroll-reveal').classList.add('visible');
+    </script>
+</body>
+</html>

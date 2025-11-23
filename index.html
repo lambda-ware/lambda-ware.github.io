@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LambdaWare</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
+        <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
         body {
@@ -16,48 +16,7 @@
             overflow-x: hidden;
         }
 
-        /* Gleaming animated background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
-            animation: gleam 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
 
-        @keyframes gleam {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(5%, 5%) rotate(120deg); }
-            66% { transform: translate(-5%, 3%) rotate(240deg); }
-        }
-
-        /* Subtle grid pattern overlay */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        main {
-            position: relative;
-            z-index: 1;
-        }
 
         .section-padding {
             padding: 6rem 1rem;
@@ -114,27 +73,7 @@
             background: #2563eb;
         }
 
-        /* Glow effect on cards */
-        .glow-card {
-            position: relative;
-            overflow: hidden;
-        }
 
-        .glow-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .glow-card:hover::before {
-            opacity: 1;
-        }
 
         /* Specific style for centering two items in a three-column grid */
         @media (min-width: 768px) {

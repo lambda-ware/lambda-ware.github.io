@@ -3,15 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnomalyWare</title>
+    <title>LambdaWare</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #111111;
+            background-color: #0a0e17;
             color: #f0f0f0;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        /* Gleaming animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
+            animation: gleam 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gleam {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(5%, 5%) rotate(120deg); }
+            66% { transform: translate(-5%, 3%) rotate(240deg); }
+        }
+
+        /* Subtle grid pattern overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
         .section-padding {
             padding: 6rem 1rem;
             min-height: 100vh;
@@ -33,8 +80,8 @@
         .project-thumbnail {
             width: 100%;
             height: 150px;
-            background-color: #333;
-            border-bottom: 3px solid #dc2626;
+            background-color: #1a2332;
+            border-bottom: 3px solid #3b82f6;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
@@ -46,7 +93,6 @@
             position: relative;
         }
         
-        /* Ensure image fills the container */
         .project-thumbnail img {
             width: 100%;
             height: 100%;
@@ -58,14 +104,36 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #202020;
+            background: #0f1419;
         }
         ::-webkit-scrollbar-thumb {
-            background: #991b1b;
+            background: #1e40af;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #b91c1c;
+            background: #2563eb;
+        }
+
+        /* Glow effect on cards */
+        .glow-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glow-card:hover::before {
+            opacity: 1;
         }
 
         /* Specific style for centering two items in a three-column grid */
@@ -74,10 +142,10 @@
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
              #projects .project-card-wrapper:first-child {
-                grid-column: 2 / span 1; /* Starts in the second column */
+                grid-column: 2 / span 1;
             }
              #projects .project-card-wrapper:nth-child(2) {
-                grid-column: 3 / span 1; /* Starts in the third column */
+                grid-column: 3 / span 1;
             }
         }
         @media (min-width: 1024px) {
@@ -85,13 +153,12 @@
                 grid-template-columns: repeat(4, minmax(0, 1fr));
             }
             #projects .project-card-wrapper:first-child {
-                grid-column: 2 / span 1; /* Starts in the second column */
+                grid-column: 2 / span 1;
             }
             #projects .project-card-wrapper:nth-child(2) {
-                grid-column: 3 / span 1; /* Starts in the third column */
+                grid-column: 3 / span 1;
             }
         }
-        /* Fallback for smaller screens and the desired two-column layout for two cards */
         @media (max-width: 767px) {
             #projects .centered-grid {
                 grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -115,10 +182,10 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary-black': '#111111',
-                        'secondary-dark': '#1a1a1a',
-                        'accent-red': '#ef4444',
-                        'text-red-light': '#fca5a5',
+                        'primary-black': '#0a0e17',
+                        'secondary-dark': '#12182b',
+                        'accent-blue': '#3b82f6',
+                        'text-blue-light': '#93c5fd',
                     }
                 }
             }
@@ -128,17 +195,17 @@
 
 <body class="bg-primary-black text-white">
 
-    <header id="navbar" class="sticky top-0 z-50 bg-primary-black/95 backdrop-blur-sm shadow-2xl border-b border-red-700/50">
+    <header id="navbar" class="sticky top-0 z-50 bg-primary-black/95 backdrop-blur-sm shadow-2xl border-b border-blue-700/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="#landing" class="text-2xl font-extrabold tracking-widest text-accent-red hover:text-text-red-light transition duration-300">
-                    ANOMALYWARE
+                <a href="#landing" class="text-2xl font-extrabold tracking-widest text-accent-blue hover:text-text-blue-light transition duration-300">
+                    LAMBDAWARE
                 </a>
 
                 <nav class="flex space-x-4 sm:space-x-8 text-sm sm:text-base font-semibold">
-                    <a href="#about" class="nav-link text-gray-300 hover:text-accent-red transition duration-200" data-section="about">About</a>
-                    <a href="#projects" class="nav-link text-gray-300 hover:text-accent-red transition duration-200" data-section="projects">Projects</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-accent-red transition duration-200" data-section="contact">Contact</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-accent-blue transition duration-200" data-section="about">About</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-accent-blue transition duration-200" data-section="projects">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-accent-blue transition duration-200" data-section="contact">Contact</a>
                 </nav>
             </div>
         </div>
@@ -148,66 +215,66 @@
         <section id="landing" class="section-padding flex items-center justify-center bg-primary-black">
             <div class="max-w-4xl text-center scroll-reveal">
                 <h1 class="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight">
-                    <span class="block text-text-red-light">Lightweight software products for the masses.</span>
-                    <span class="block text-accent-red">AnomalyWare.</span>
+                    <span class="block text-text-blue-light">Lightweight software products for the masses.</span>
+                    <span class="block text-accent-blue">LambdaWare.</span>
                 </h1>
                 <p class="text-xl sm:text-2xl text-gray-400 font-light mb-8">
                     We specialize in tools and utilities that help all sorts of different people in their daily routine. 
                 </p>
-                <a href="#projects" class="inline-block px-8 py-3 bg-accent-red text-white text-lg font-bold rounded-lg shadow-2xl shadow-red-500/30 hover:bg-red-600 transition duration-300 transform hover:scale-105">
+                <a href="#projects" class="inline-block px-8 py-3 bg-accent-blue text-white text-lg font-bold rounded-lg shadow-2xl shadow-blue-500/30 hover:bg-blue-600 transition duration-300 transform hover:scale-105">
                     Explore our Products &rarr;
                 </a>
             </div>
         </section>
         
-        <hr/>
+        <hr class="border-blue-900/30"/>
 
-        <section id="about" class="section-padding bg-secondary-dark border-t border-b border-red-800/50">
+        <section id="about" class="section-padding bg-secondary-dark border-t border-b border-blue-800/50">
             <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4 scroll-reveal">
-                <div class="p-8 border border-red-700/50 rounded-xl shadow-2xl shadow-black/50 bg-black/30">
-                    <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-accent-red">Our Ethos</h2>
+                <div class="p-8 border border-blue-700/50 rounded-xl shadow-2xl shadow-black/50 bg-black/30 glow-card">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-accent-blue">Our Ethos</h2>
                     <p class="text-gray-300 text-lg leading-relaxed">
                         Simple and effective products, tailored for all sorts of purposes. Our principals are based on simplicity and usability. No need for allat bloat. 
                     </p>
                 </div>
                 <div class="space-y-6">
-                    <div class="p-4 bg-gray-900 rounded-lg shadow-md border-l-4 border-accent-red scroll-reveal">
-                        <h3 class="text-xl font-semibold text-text-red-light">Lightweight</h3>
+                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal glow-card">
+                        <h3 class="text-xl font-semibold text-text-blue-light">Lightweight</h3>
                         <p class="text-sm text-gray-400">No extra fluff and no crowded UIs. Just what you need, where you need.</p>
                     </div>
-                    <div class="p-4 bg-gray-900 rounded-lg shadow-md border-l-4 border-accent-red scroll-reveal" style="transition-delay: 0.2s;">
-                        <h3 class="text-xl font-semibold text-text-red-light">Intuitive Simplicity</h3>
+                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal glow-card" style="transition-delay: 0.2s;">
+                        <h3 class="text-xl font-semibold text-text-blue-light">Intuitive Simplicity</h3>
                         <p class="text-sm text-gray-400">No more complicated workflows and head-scratching bullshit.</p>
                     </div>
-                    <div class="p-4 bg-gray-900 rounded-lg shadow-md border-l-4 border-accent-red scroll-reveal" style="transition-delay: 0.4s;">
-                        <h3 class="text-xl font-semibold text-text-red-light">For the people, by the people</h3>
+                    <div class="p-4 bg-gray-900/80 rounded-lg shadow-md border-l-4 border-accent-blue scroll-reveal glow-card" style="transition-delay: 0.4s;">
+                        <h3 class="text-xl font-semibold text-text-blue-light">For the people, by the people</h3>
                         <p class="text-sm text-gray-400">We aren't delusional idiots who have no clue what people want. We use what we make too, yk.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <hr/>
+        <hr class="border-blue-900/30"/>
 
         <section id="projects" class="section-padding bg-primary-black">
             <div class="max-w-6xl mx-auto px-4 w-full">
-                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-red scroll-reveal">Project Dossiers</h2>
+                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-blue scroll-reveal">Project Dossiers</h2>
                 
                 <div class="grid gap-8 centered-grid">
 
                     <div class="project-card-wrapper scroll-reveal">
-                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-blue-900/10 border border-blue-900/50 hover:border-accent-blue transition duration-300 transform hover:-translate-y-1 h-full flex flex-col glow-card">
                             <div class="project-thumbnail">
                                 <img 
-                                    src="https://github.com/anomalyware/anomalyware.github.io/blob/main/hwhelper.png?raw=true" 
+                                    src="https://github.com/labmda-ware/labmda-ware.github.io/blob/main/hwhelper.png?raw=true" 
                                     alt="HW Helper, a free and easy tool to help with managing assignments"
-                                    onerror="this.onerror=null; this.src='https://placehold.co/600x150/333/bbb?text=Image+Unavailable';"
+                                    onerror="this.onerror=null; this.src='https://placehold.co/600x150/1a2332/bbb?text=Image+Unavailable';"
                                 >
                             </div>
                             <div class="p-6 flex flex-col flex-grow">
                                 <h3 class="text-2xl font-semibold mb-2 text-white">HW-Helper</h3>
                                 <p class="text-gray-400 mb-4 text-sm flex-grow">A free and easy tool to help students with managing and tracking assignments.</p>
-                                <a href="https://anomalyware.github.io/hw-helper/" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center mt-auto">
+                                <a href="https://labmda-ware.github.io/hw-helper/" target="_blank" class="text-text-blue-light hover:text-accent-blue font-medium flex items-center mt-auto">
                                     Check it out &rarr;
                                 </a>
                             </div>
@@ -215,18 +282,18 @@
                     </div>
 
                     <div class="project-card-wrapper scroll-reveal" style="transition-delay: 0.2s;">
-                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-red-900/10 border border-red-900/50 hover:border-accent-red transition duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+                        <div class="bg-secondary-dark rounded-xl shadow-2xl shadow-blue-900/10 border border-blue-900/50 hover:border-accent-blue transition duration-300 transform hover:-translate-y-1 h-full flex flex-col glow-card">
                             <div class="project-thumbnail">
                                 <img 
-                                    src="https://github.com/anomalyware/anomalyware.github.io/blob/main/jsonvis.png?raw=true" 
+                                    src="https://github.com/labmda-ware/labmda-ware.github.io/blob/main/jsonvis.png?raw=true" 
                                     alt="A beautiful and easy-to-use free tool to visualize json blobs"
-                                    onerror="this.onerror=null; this.src='https://placehold.co/600x150/333/bbb?text=Image+Unavailable';"
+                                    onerror="this.onerror=null; this.src='https://placehold.co/600x150/1a2332/bbb?text=Image+Unavailable';"
                                 >
                             </div>
                             <div class="p-6 flex flex-col flex-grow">
                                 <h3 class="text-2xl font-semibold mb-2 text-white">JSON Vis</h3>
                                 <p class="text-gray-400 mb-4 text-sm flex-grow">A beautiful and easy-to-use free tool to visualize json blobs</p>
-                                <a href="https://anomalyware.github.io/jsonvis/" target="_blank" class="text-text-red-light hover:text-accent-red font-medium flex items-center mt-auto">
+                                <a href="https://labmda-ware.github.io/jsonvis/" target="_blank" class="text-text-blue-light hover:text-accent-blue font-medium flex items-center mt-auto">
                                     Take a Look &rarr;
                                 </a>
                             </div>
@@ -237,32 +304,32 @@
             </div>
         </section>
 
-        <hr/>
+        <hr class="border-blue-900/30"/>
 
-        <section id="contact" class="section-padding bg-secondary-dark border-t border-red-800/50">
+        <section id="contact" class="section-padding bg-secondary-dark border-t border-blue-800/50">
             <div class="max-w-4xl mx-auto px-4 w-full">
-                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-red scroll-reveal">Talk to us 📧</h2>
+                <h2 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-accent-blue scroll-reveal">Talk to us 📧</h2>
 
-                <div class="bg-black/50 p-8 sm:p-12 rounded-xl border border-red-800/50 shadow-2xl scroll-reveal">
+                <div class="bg-black/50 p-8 sm:p-12 rounded-xl border border-blue-800/50 shadow-2xl scroll-reveal glow-card">
                     
                     <p class="text-gray-300 text-xl font-light mb-8 text-center">
                         Have any questions? Shoot us a message at any of these locations:
                     </p>
 
                     <div class="grid sm:grid-cols-3 gap-6 text-center">
-                        <div class="p-4 bg-gray-900 rounded-lg hover:bg-red-900/30 transition duration-300">
-                            <span class="block text-text-red-light font-bold text-lg mb-1">Email</span>
+                        <div class="p-4 bg-gray-900/80 rounded-lg hover:bg-blue-900/30 transition duration-300 glow-card">
+                            <span class="block text-text-blue-light font-bold text-lg mb-1">Email</span>
                             <a href="mailto:hiatusdev@outlook.com" class="text-gray-300 hover:text-white transition text-sm sm:text-base">hiatusdev@outlook.com</a>
                         </div>
 
-                        <div class="p-4 bg-gray-900 rounded-lg hover:bg-red-900/30 transition duration-300">
-                            <span class="block text-text-red-light font-bold text-lg mb-1">Discord Channel</span>
-                            <a href="https://discord.gg/a" target="_blank" class="text-gray-300 hover:text-white transition text-sm sm:text-base">anomalyware</a>
+                        <div class="p-4 bg-gray-900/80 rounded-lg hover:bg-blue-900/30 transition duration-300 glow-card">
+                            <span class="block text-text-blue-light font-bold text-lg mb-1">Discord Channel</span>
+                            <a href="https://discord.gg/a" target="_blank" class="text-gray-300 hover:text-white transition text-sm sm:text-base">lambdaware</a>
                         </div>
 
-                        <div class="p-4 bg-gray-900 rounded-lg hover:bg-red-900/30 transition duration-300">
-                            <span class="block text-text-red-light font-bold text-lg mb-1">Telegram</span>
-                            <a href="https://t.me/hiatusv1" target="_blank" class="text-gray-300 hover:text-white transition text-sm sm:text-base">@Anomaly</a>
+                        <div class="p-4 bg-gray-900/80 rounded-lg hover:bg-blue-900/30 transition duration-300 glow-card">
+                            <span class="block text-text-blue-light font-bold text-lg mb-1">Telegram</span>
+                            <a href="https://t.me/hiatusv1" target="_blank" class="text-gray-300 hover:text-white transition text-sm sm:text-base">@Lambda</a>
                         </div>
                     </div>
                 </div>
@@ -274,8 +341,8 @@
         </section>
     </main>
 
-    <footer class="bg-primary-black py-8 border-t border-red-900/50 text-center text-gray-600 text-sm">
-        <p>&copy; 2025 AnomalyWare. Engineered for the Unconventional.</p>
+    <footer class="bg-primary-black py-8 border-t border-blue-900/50 text-center text-gray-600 text-sm">
+        <p>&copy; 2025 LambdaWare. Engineered for the Unconventional.</p>
     </footer>
 
     <script>
@@ -294,28 +361,26 @@
 
         const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Adjust threshold for 'landing' section to prevent instant activation on short pages
                 const isLanding = entry.target.id === 'landing';
                 
-                // Only change link if intersecting (and past the top for non-landing sections)
                 if (entry.isIntersecting) {
                     const currentSectionId = entry.target.id;
                     
                     navLinks.forEach(link => {
-                        link.classList.remove('border-b-2', 'border-accent-red', 'text-accent-red');
+                        link.classList.remove('border-b-2', 'border-accent-blue', 'text-accent-blue');
                         link.classList.add('text-gray-300');
                     });
 
                     const activeLink = document.querySelector(`.nav-link[data-section="${currentSectionId}"]`);
                     if (activeLink) {
-                        activeLink.classList.add('border-b-2', 'border-accent-red', 'text-accent-red');
+                        activeLink.classList.add('border-b-2', 'border-accent-blue', 'text-accent-blue');
                         activeLink.classList.remove('text-gray-300');
                     }
                 }
             });
         }, {
-            rootMargin: "-33% 0px -33% 0px", // Increased margin to make section detection less sensitive
-            threshold: 0 // Threshold is still 0, but margin helps define the "active" viewport area
+            rootMargin: "-33% 0px -33% 0px",
+            threshold: 0
         });
 
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -327,7 +392,7 @@
             });
         }, {
             threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px" // Start animating earlier as element comes into view
+            rootMargin: "0px 0px -50px 0px"
         });
 
         sections.forEach(section => {
@@ -338,7 +403,6 @@
             revealObserver.observe(element);
         });
 
-        // Ensure landing section elements are visible on load
         document.querySelector('#landing .scroll-reveal').classList.add('visible');
     </script>
 </body>
